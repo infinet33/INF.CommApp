@@ -1,0 +1,27 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="DEV" />
+    <BuildType Name="PROD" />
+    <BuildType Name="STAGING" />
+    <BuildType Name="TEST" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="CODING_RULES.md" />
+  </Folder>
+  <Project Path="INF.CommApp.Api/INF.CommApp.API.csproj">
+    <BuildType Solution="STAGING|*" Project="DEV" />
+  </Project>
+  <Project Path="INF.CommApp.BLL/INF.CommApp.BLL.csproj">
+    <BuildType Solution="STAGING|*" Project="DEV" />
+  </Project>
+  <Project Path="INF.CommApp.DATA/INF.CommApp.DATA.csproj">
+    <BuildType Solution="STAGING|*" Project="DEV" />
+  </Project>
+  <Project Path="INF.CommApp.Maui/INF.CommApp.MAUI.csproj">
+    <BuildType Solution="STAGING|*" Project="DEV" />
+    <Deploy />
+  </Project>
+  <Project Path="INF.CommApp.Web/INF.CommApp.WEB.csproj">
+    <BuildType Solution="STAGING|*" Project="DEV" />
+  </Project>
+</Solution>

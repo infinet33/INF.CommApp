@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/INF.CommApp.Api/bin
+/INF.CommApp.Api/obj
+/INF.CommApp.BLL/bin
+/INF.CommApp.BLL/obj
+/INF.CommApp.DATA/bin
+/INF.CommApp.DATA/obj
+/INF.CommApp.Maui/bin
+/INF.CommApp.Maui/obj
+/INF.CommApp.Web/bin/DEV/net9.0
+/INF.CommApp.Web/obj
+/INF.CommApp.Web/wwwroot/lib/bootstrap/dist
