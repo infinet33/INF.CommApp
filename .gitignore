@@ -14,3 +14,4 @@
 /INF.CommApp.Web/bin/DEV/net9.0
 /INF.CommApp.Web/obj
 /INF.CommApp.Web/wwwroot/lib/bootstrap/dist
+/INF.CommApp.Web/bin/PROD/net9.0

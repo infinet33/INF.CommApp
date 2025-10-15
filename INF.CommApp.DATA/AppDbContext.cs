@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using INF.CommApp.DATA.Models;
 
 namespace INF.CommApp.DATA
 {
@@ -9,7 +10,19 @@ namespace INF.CommApp.DATA
         {
         }
 
+        public DbSet<Facility> Facilities { get; set; }
         public DbSet<Resident> Residents { get; set; }
-        // Add other DbSet properties as needed
+        public DbSet<User> Users { get; set; }
+        public DbSet<Agency> Agencies { get; set; }
+        public DbSet<UserResident> UserResidents { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<NotificationSubscription> NotificationSubscriptions { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserResident>()
+                .HasKey(ur => new { ur.UserId, ur.ResidentId });
+            // Add other relationships as needed
+        }
     }
 }

@@ -16,6 +16,7 @@
   </Project>
   <Project Path="INF.CommApp.DATA/INF.CommApp.DATA.csproj">
     <BuildType Solution="STAGING|*" Project="DEV" />
+    <BuildType Solution="TEST|*" Project="STAGING" />
   </Project>
   <Project Path="INF.CommApp.Maui/INF.CommApp.MAUI.csproj">
     <BuildType Solution="STAGING|*" Project="DEV" />
