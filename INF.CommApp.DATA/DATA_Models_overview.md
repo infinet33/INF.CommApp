@@ -16,15 +16,27 @@ The data model supports a healthcare communication platform where:
 **Namespace:** `INF.CommApp.DATA.Models`
 - ✅ `Facility.cs` - Care facilities (PRIMARY ENTITY)
 - ✅ `Resident.cs` - Patients/clients receiving care  
-- ✅ `User.cs` - Healthcare staff and professionals
+- ✅ `User.cs` - Healthcare staff and professionals **[ENHANCED WITH AUTHENTICATION]**
+- ✅ `Role.cs` - Role-based access control **[NEW - v2.0]**
+- ✅ `UserRole.cs` - User-Role assignments **[NEW - v2.0]**
 - ✅ `Notification.cs` - Alerts and messages
 - ✅ `NotificationSubscription.cs` - User alert subscriptions
+- ✅ `UserNotificationPreference.cs` - User notification settings **[NEW - v2.0]**
 - ✅ `UserResident.cs` - Care assignment junction table
 - ✅ `Agency.cs` - Healthcare agencies (optional)
 - ✅ `AppDbContext.cs` - Entity Framework configuration
 
 ## 📅 Last Updated
-**Auto-sync with C# models:** This document reflects the current state of the actual data model classes.
+- **Date**: October 25, 2025
+- **Version**: 2.0 (Authentication System Integration)
+- **Migration**: `AddAuthenticationTables` (20251026023014)
+- **Auto-sync with C# models:** This document reflects the current state of the actual data model classes.
+
+## 🔑 External ID Pattern
+All main entities include both an internal `Id` (integer) and an `ExternalId` (GUID):
+- **Internal operations**: Use `Id` for database relationships and EF Core navigation
+- **External APIs**: Use `ExternalId` for all client-facing operations and API endpoints
+- **Security benefit**: Prevents ID enumeration attacks and obscures internal database structure
 
 ```mermaid
 graph LR
@@ -119,6 +131,7 @@ The diagram shows the logical flow of relationships in the healthcare communicat
 public class Facility
 {
     public int Id { get; set; }
+    public Guid ExternalId { get; set; } = Guid.NewGuid();
     public string Name { get; set; }
     public string Address { get; set; }
     public string City { get; set; }
@@ -133,6 +146,7 @@ public class Facility
 public class Resident
 {
     public int Id { get; set; }
+    public Guid ExternalId { get; set; } = Guid.NewGuid();
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public int FacilityId { get; set; }
@@ -146,6 +160,7 @@ public class Resident
 public class User
 {
     public int Id { get; set; }
+    public Guid ExternalId { get; set; } = Guid.NewGuid();
     public string UserName { get; set; }
     public string Type { get; set; } // nurse, caregiver, doctor, etc.
     public int? AgencyId { get; set; }
@@ -160,6 +175,7 @@ public class User
 public class Notification
 {
     public int Id { get; set; }
+    public Guid ExternalId { get; set; } = Guid.NewGuid();
     public string Message { get; set; }
     public NotificationPriority Priority { get; set; }
     public DateTime CreatedAt { get; set; }
@@ -206,6 +222,7 @@ public class NotificationSubscription
 public class Agency
 {
     public int Id { get; set; }
+    public Guid ExternalId { get; set; } = Guid.NewGuid();
     public string Name { get; set; }
     public string Address { get; set; }
     public string City { get; set; }

@@ -17,6 +17,9 @@ namespace INF.CommApp.DATA
         public DbSet<UserResident> UserResidents { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<NotificationSubscription> NotificationSubscriptions { get; set; }
+        public DbSet<UserNotificationPreference> UserNotificationPreferences { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -48,6 +51,61 @@ namespace INF.CommApp.DATA
                 .HasIndex(n => n.ExternalId)
                 .IsUnique()
                 .HasDatabaseName("IX_Notifications_ExternalId");
+
+            modelBuilder.Entity<UserNotificationPreference>()
+                .HasIndex(unp => unp.ExternalId)
+                .IsUnique()
+                .HasDatabaseName("IX_UserNotificationPreferences_ExternalId");
+
+            // Configure unique constraint on UserId + NotificationType
+            modelBuilder.Entity<UserNotificationPreference>()
+                .HasIndex(unp => new { unp.UserId, unp.NotificationType })
+                .IsUnique()
+                .HasDatabaseName("IX_UserNotificationPreferences_UserId_NotificationType");
+
+            // Configure User -> UserNotificationPreference relationship
+            modelBuilder.Entity<UserNotificationPreference>()
+                .HasOne(unp => unp.User)
+                .WithMany(u => u.NotificationPreferences)
+                .HasForeignKey(unp => unp.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure UserRole junction table (many-to-many User <-> Role)
+            modelBuilder.Entity<UserRole>()
+                .HasKey(ur => new { ur.UserId, ur.RoleId });
+
+            modelBuilder.Entity<UserRole>()
+                .HasOne(ur => ur.User)
+                .WithMany(u => u.UserRoles)
+                .HasForeignKey(ur => ur.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<UserRole>()
+                .HasOne(ur => ur.Role)
+                .WithMany(r => r.UserRoles)
+                .HasForeignKey(ur => ur.RoleId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure Role indexes
+            modelBuilder.Entity<Role>()
+                .HasIndex(r => r.ExternalId)
+                .IsUnique()
+                .HasDatabaseName("IX_Roles_ExternalId");
+
+            modelBuilder.Entity<Role>()
+                .HasIndex(r => r.NormalizedName)
+                .IsUnique()
+                .HasDatabaseName("IX_Roles_NormalizedName");
+
+            // Configure User authentication indexes
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.EmailAddress)
+                .IsUnique()
+                .HasDatabaseName("IX_Users_EmailAddress");
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.UserName)
+                .HasDatabaseName("IX_Users_UserName");
 
             // Add other relationships as needed
         }
