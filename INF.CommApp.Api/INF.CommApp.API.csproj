@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <Configurations>DEV;TEST;STAGING;PROD</Configurations>
-    <NoWarn>CA1311;CA1304;CA1848;CA1305;CA1862</NoWarn>
+    <NoWarn>CA1311;CA1304;CA1848;CA1305;CA1862;CS8618</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

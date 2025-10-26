@@ -18,7 +18,7 @@
     
     <!-- Suppress non-critical warnings globally -->
     <!-- Global warning suppressions for non-critical issues -->
-    <NoWarn>$(NoWarn);CA1311;CA1304;CA1848;CA1305;CA1862;CA2254;CA1805;CA1860;CA1822;CA1861;IDE0040;IDE0005;CS8601;CS8602</NoWarn>
+    <NoWarn>$(NoWarn);CA1311;CA1304;CA1848;CA1305;CA1862;CA2254;CA1805;CA1860;CA1822;CA1861;IDE0040;IDE0005;CS8601;CS8602;CS8618;NETSDK1057</NoWarn>
     
     <!-- Disable documentation file generation and related warnings -->
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
