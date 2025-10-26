@@ -265,6 +265,6 @@ public class AppDbContext : DbContext
 
 ## Usage in Other Projects
 
-- **INF.CommApp.Api**: References this project for API controllers
+- **INF.CommApp.API**: References this project for API controllers
 - **INF.CommApp.BLL**: References this project for business logic
 - **INF.CommApp.Web**: References this project for web application data access

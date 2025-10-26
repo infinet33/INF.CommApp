@@ -88,7 +88,7 @@ Notifications
 ### Testing Commands
 ```powershell
 # Start the application
-cd "c:\Users\jeato\OneDrive\Source\INF.CommApp\INF.CommApp.Api"
+cd "c:\Users\jeato\OneDrive\Source\INF.CommApp\INF.CommApp.API"
 dotnet run
 
 # Access Swagger UI

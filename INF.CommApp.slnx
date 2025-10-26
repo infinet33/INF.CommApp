@@ -8,7 +8,7 @@
   <Folder Name="/Solution Items/">
     <File Path="CODING_RULES.md" />
   </Folder>
-  <Project Path="INF.CommApp.Api/INF.CommApp.API.csproj">
+  <Project Path="INF.CommApp.API/INF.CommApp.API.csproj">
     <BuildType Solution="STAGING|*" Project="DEV" />
   </Project>
   <Project Path="INF.CommApp.BLL/INF.CommApp.BLL.csproj">

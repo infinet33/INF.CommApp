@@ -95,7 +95,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ## 🚀 **Next Steps**
 
-1. **Run the Application**: `dotnet run --project INF.CommApp.Api`
+1. **Run the Application**: `dotnet run --project INF.CommApp.API`
 2. **Test with Swagger**: Navigate to `/swagger` endpoint  
 3. **Add [Authorize] Attributes**: Protect your existing controllers
 4. **Test Authentication**: Use the provided API endpoints

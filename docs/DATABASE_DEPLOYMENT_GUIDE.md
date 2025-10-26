@@ -42,10 +42,10 @@ This guide provides step-by-step instructions for deploying and updating the INF
 cd "c:\Users\jeato\OneDrive\Source\INF.CommApp\INF.CommApp.DATA"
 
 # Apply all pending migrations
-dotnet ef database update --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+dotnet ef database update --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
 
 # Create new migration (if needed)
-dotnet ef migrations add "MigrationName" --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+dotnet ef migrations add "MigrationName" --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
 ```
 
 ### For Production (Azure SQL)
@@ -57,16 +57,16 @@ $env:ASPNETCORE_ENVIRONMENT="Production"
 cd "path\to\INF.CommApp.DATA"
 
 # Apply migrations to production
-dotnet ef database update --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+dotnet ef database update --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
 ```
 
 ### Generate SQL Scripts (for manual deployment)
 ```powershell
 # Generate script for all migrations
-dotnet ef migrations script --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj" --output database-update.sql
+dotnet ef migrations script --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj" --output database-update.sql
 
 # Generate script from specific migration
-dotnet ef migrations script AddExternalIds AddAuthenticationTables --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj" --output auth-update.sql
+dotnet ef migrations script AddExternalIds AddAuthenticationTables --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj" --output auth-update.sql
 ```
 
 ## Database Initialization
@@ -74,7 +74,7 @@ dotnet ef migrations script AddExternalIds AddAuthenticationTables --startup-pro
 ### First-Time Setup
 1. **Create Local Database**:
    ```powershell
-   dotnet ef database update --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+   dotnet ef database update --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
    ```
 
 2. **Verify Tables Created**:
@@ -129,15 +129,15 @@ dotnet ef migrations script AddExternalIds AddAuthenticationTables --startup-pro
 #### Rollback to Previous Migration
 ```powershell
 # Rollback to specific migration
-dotnet ef database update PreviousMigrationName --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+dotnet ef database update PreviousMigrationName --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
 
 # Rollback to initial state
-dotnet ef database update 0 --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+dotnet ef database update 0 --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
 ```
 
 #### Remove Last Migration (before applying)
 ```powershell
-dotnet ef migrations remove --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+dotnet ef migrations remove --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
 ```
 
 ## Data Seeding
@@ -200,16 +200,16 @@ For development and testing, consider creating a data seeding service for:
 
 ```powershell
 # Check migration status
-dotnet ef migrations list --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+dotnet ef migrations list --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
 
 # Check database status  
-dotnet ef database update --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj" --verbose
+dotnet ef database update --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj" --verbose
 
 # Generate migration script
-dotnet ef migrations script --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+dotnet ef migrations script --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
 
 # Drop database (development only)
-dotnet ef database drop --startup-project "../INF.CommApp.Api/INF.CommApp.API.csproj"
+dotnet ef database drop --startup-project "../INF.CommApp.API/INF.CommApp.API.csproj"
 ```
 
 ---
