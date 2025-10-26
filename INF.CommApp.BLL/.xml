@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>INF.CommApp.BLL</name>
+    </assembly>
+    <members>
+        <member name="T:INF.CommApp.BLL.Extensions.NotificationServiceExtensions">
+            <summary>
+            Extension methods for setting up notification services
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Extensions.NotificationServiceExtensions.AddNotificationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add notification services to dependency injection container
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Extensions.INotificationServiceConfigurator">
+            <summary>
+            Service to configure notification providers at startup
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Interfaces.INotificationProvider">
+            <summary>
+            Interface for notification delivery providers (SMS, Push, IVR, etc.)
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Interfaces.INotificationService">
+            <summary>
+            Main notification service interface
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Interfaces.INotificationService.SendNotificationAsync(INF.CommApp.BLL.Models.NotificationRequest)">
+            <summary>
+            Send notification through specified channels
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Interfaces.INotificationService.SendBatchNotificationsAsync(System.Collections.Generic.List{INF.CommApp.BLL.Models.NotificationRequest})">
+            <summary>
+            Send notifications to multiple recipients
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Interfaces.INotificationService.SendAboutResidentToCareTeamAsync(System.Int32,System.String,INF.CommApp.DATA.Models.NotificationPriority,INF.CommApp.BLL.Models.NotificationChannel)">
+            <summary>
+            Send notification ABOUT a resident TO their care team members
+            The notification will be tracked in the resident's chart/history
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Interfaces.INotificationService.SendFacilityNotificationAsync(System.Int32,System.String,INF.CommApp.DATA.Models.NotificationPriority,INF.CommApp.BLL.Models.NotificationChannel)">
+            <summary>
+            Send facility-wide notification to all staff members
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Interfaces.INotificationService.RegisterProvider(INF.CommApp.BLL.Interfaces.INotificationProvider)">
+            <summary>
+            Register a new notification provider
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Interfaces.INotificationService.GetAvailableChannels">
+            <summary>
+            Get available notification channels
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Models.NotificationRequest">
+            <summary>
+            Represents a notification request to be sent to care team members about a resident
+            </summary>
+        </member>
+        <member name="P:INF.CommApp.BLL.Models.NotificationRequest.AboutResidentId">
+            <summary>
+            ID of the resident this notification is about (for chart/history tracking)
+            </summary>
+        </member>
+        <member name="P:INF.CommApp.BLL.Models.NotificationRequest.FacilityId">
+            <summary>
+            ID of the facility where this notification originated
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Models.NotificationChannel">
+            <summary>
+            Notification delivery channels (supports multiple channels)
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Models.NotificationResult">
+            <summary>
+            Result of notification delivery attempt
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Models.NotificationBatchResult">
+            <summary>
+            Batch result for multiple notification deliveries
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Models.UserNotificationPreferences">
+            <summary>
+            User's notification preferences for different channels
+            </summary>
+        </member>
+        <member name="P:INF.CommApp.BLL.Models.UserNotificationPreferences.QuietHoursStart">
+            <summary>
+            Time preferences for non-urgent notifications
+            </summary>
+        </member>
+        <member name="P:INF.CommApp.BLL.Models.UserNotificationPreferences.MinimumUrgentPriority">
+            <summary>
+            Priority levels that can interrupt quiet hours
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Models.UserNotificationPreferences.GetEnabledChannels">
+            <summary>
+            Convert preferences to NotificationChannel flags
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Models.UserNotificationPreferences.ShouldSendNow(INF.CommApp.DATA.Models.NotificationPriority)">
+            <summary>
+            Check if notification should be sent based on time and priority
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Providers.MauiPushProvider">
+            <summary>
+            Placeholder for future MAUI push notification provider
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Providers.IvrProvider">
+            <summary>
+            Placeholder for future IVR notification provider
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Providers.TwilioSmsProvider">
+            <summary>
+            Twilio SMS notification provider
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Providers.TwilioSmsProvider.FormatMessage(System.String,INF.CommApp.DATA.Models.NotificationPriority)">
+            <summary>
+            Format message based on priority
+            </summary>
+        </member>
+        <member name="T:INF.CommApp.BLL.Services.NotificationService">
+            <summary>
+            Main notification service that orchestrates multiple notification providers
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Services.NotificationService.GetIndividualChannels(INF.CommApp.BLL.Models.NotificationChannel)">
+            <summary>
+            Extract individual channels from flags enum
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Services.NotificationService.GetUserContactInfo(INF.CommApp.DATA.Models.User)">
+            <summary>
+            Get user contact information for notifications
+            TODO: Implement based on how you store phone numbers, device tokens, etc.
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Services.NotificationService.LogNotificationAttempt(INF.CommApp.BLL.Models.NotificationRequest,INF.CommApp.BLL.Models.NotificationBatchResult)">
+            <summary>
+            Log notification attempts to database for audit trail and resident chart history
+            This creates a record that can be linked to the resident's care history
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Services.NotificationService.GetUserPreferencesAsync(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Get user notification preferences for batch of users
+            </summary>
+        </member>
+        <member name="M:INF.CommApp.BLL.Services.UserNotificationPreferencesService.GetDefaultPreferencesForUserAsync(System.Int32)">
+            <summary>
+            Get default preferences based on user type
+            </summary>
+        </member>
+    </members>
+</doc>

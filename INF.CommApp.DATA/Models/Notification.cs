@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-
 namespace INF.CommApp.DATA.Models
 {
     public class Notification
     {
         public int Id { get; set; }
+        public Guid ExternalId { get; set; } = Guid.NewGuid();
         public string Message { get; set; }
         public NotificationPriority Priority { get; set; }
         public DateTime CreatedAt { get; set; }

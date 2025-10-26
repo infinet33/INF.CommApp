@@ -1,0 +1,16 @@
+{
+    // Auto-fix code style issues on save
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    // C# specific settings
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+    "dotnet.server.waitForDebugger": false,
+    // Show problems inline
+    "problems.showCurrentInStatus": true,
+    // Format settings
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableRoslynAnalyzers": true
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>INF.CommApp.DATA</name>
+    </assembly>
+    <members>
+        <member name="T:INF.CommApp.DATA.Migrations.InitialScript">
+            <inheritdoc />
+        </member>
+        <member name="M:INF.CommApp.DATA.Migrations.InitialScript.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:INF.CommApp.DATA.Migrations.InitialScript.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:INF.CommApp.DATA.Migrations.InitialScript.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

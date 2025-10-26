@@ -1,11 +1,9 @@
 using Azure.Identity;
+using INF.CommApp.BLL.Extensions;
 using INF.CommApp.DATA;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models; // Add this using directive
-using System;
-using Swashbuckle.AspNetCore.Swagger;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -20,7 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -28,10 +26,16 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-var connectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];
+string? connectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString)); // This will now work
+
+//Configure notification services
+builder.Services.AddNotificationServices();
+
+//Configure business services
+builder.Services.AddBusinessServices();
 
 app.UseHttpsRedirection();
 

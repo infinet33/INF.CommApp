@@ -22,24 +22,7 @@ namespace INF.CommApp.DATA.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("INF.CommApp.DATA.Agency", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Agencies");
-                });
-
-            modelBuilder.Entity("INF.CommApp.DATA.Facility", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Agency", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,16 +34,75 @@ namespace INF.CommApp.DATA.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ExternalId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Zip")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ExternalId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Agencies_ExternalId");
+
+                    b.ToTable("Agencies");
+                });
+
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Facility", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ExternalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Zip")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExternalId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Facilities_ExternalId");
+
                     b.ToTable("Facilities");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.Notification", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Notification", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,6 +112,9 @@ namespace INF.CommApp.DATA.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ExternalId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("FacilityId")
                         .HasColumnType("int");
@@ -83,12 +128,16 @@ namespace INF.CommApp.DATA.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ExternalId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Notifications_ExternalId");
+
                     b.HasIndex("FacilityId");
 
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.NotificationSubscription", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.NotificationSubscription", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,13 +160,16 @@ namespace INF.CommApp.DATA.Migrations
                     b.ToTable("NotificationSubscriptions");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.Resident", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Resident", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("ExternalId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("FacilityId")
                         .HasColumnType("int");
@@ -132,12 +184,16 @@ namespace INF.CommApp.DATA.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ExternalId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Residents_ExternalId");
+
                     b.HasIndex("FacilityId");
 
                     b.ToTable("Residents");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.User", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,6 +203,9 @@ namespace INF.CommApp.DATA.Migrations
 
                     b.Property<int?>("AgencyId")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("ExternalId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -160,10 +219,14 @@ namespace INF.CommApp.DATA.Migrations
 
                     b.HasIndex("AgencyId");
 
+                    b.HasIndex("ExternalId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Users_ExternalId");
+
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.UserResident", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.UserResident", b =>
                 {
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -178,9 +241,9 @@ namespace INF.CommApp.DATA.Migrations
                     b.ToTable("UserResidents");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.Notification", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Notification", b =>
                 {
-                    b.HasOne("INF.CommApp.DATA.Facility", "Facility")
+                    b.HasOne("INF.CommApp.DATA.Models.Facility", "Facility")
                         .WithMany()
                         .HasForeignKey("FacilityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -189,15 +252,15 @@ namespace INF.CommApp.DATA.Migrations
                     b.Navigation("Facility");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.NotificationSubscription", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.NotificationSubscription", b =>
                 {
-                    b.HasOne("INF.CommApp.DATA.Notification", "Notification")
+                    b.HasOne("INF.CommApp.DATA.Models.Notification", "Notification")
                         .WithMany("NotificationSubscriptions")
                         .HasForeignKey("NotificationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("INF.CommApp.DATA.User", "User")
+                    b.HasOne("INF.CommApp.DATA.Models.User", "User")
                         .WithMany("NotificationSubscriptions")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -208,9 +271,9 @@ namespace INF.CommApp.DATA.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.Resident", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Resident", b =>
                 {
-                    b.HasOne("INF.CommApp.DATA.Facility", "Facility")
+                    b.HasOne("INF.CommApp.DATA.Models.Facility", "Facility")
                         .WithMany("Residents")
                         .HasForeignKey("FacilityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -219,24 +282,24 @@ namespace INF.CommApp.DATA.Migrations
                     b.Navigation("Facility");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.User", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.User", b =>
                 {
-                    b.HasOne("INF.CommApp.DATA.Agency", "Agency")
+                    b.HasOne("INF.CommApp.DATA.Models.Agency", "Agency")
                         .WithMany("Users")
                         .HasForeignKey("AgencyId");
 
                     b.Navigation("Agency");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.UserResident", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.UserResident", b =>
                 {
-                    b.HasOne("INF.CommApp.DATA.Resident", "Resident")
+                    b.HasOne("INF.CommApp.DATA.Models.Resident", "Resident")
                         .WithMany("UserResidents")
                         .HasForeignKey("ResidentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("INF.CommApp.DATA.User", "User")
+                    b.HasOne("INF.CommApp.DATA.Models.User", "User")
                         .WithMany("UserResidents")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -247,27 +310,27 @@ namespace INF.CommApp.DATA.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.Agency", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Agency", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.Facility", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Facility", b =>
                 {
                     b.Navigation("Residents");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.Notification", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Notification", b =>
                 {
                     b.Navigation("NotificationSubscriptions");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.Resident", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.Resident", b =>
                 {
                     b.Navigation("UserResidents");
                 });
 
-            modelBuilder.Entity("INF.CommApp.DATA.User", b =>
+            modelBuilder.Entity("INF.CommApp.DATA.Models.User", b =>
                 {
                     b.Navigation("NotificationSubscriptions");
 

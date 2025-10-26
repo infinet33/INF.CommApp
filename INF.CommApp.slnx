@@ -18,10 +18,7 @@
     <BuildType Solution="STAGING|*" Project="DEV" />
     <BuildType Solution="TEST|*" Project="STAGING" />
   </Project>
-  <Project Path="INF.CommApp.Maui/INF.CommApp.MAUI.csproj">
-    <BuildType Solution="STAGING|*" Project="DEV" />
-    <Deploy />
-  </Project>
+
   <Project Path="INF.CommApp.Web/INF.CommApp.WEB.csproj">
     <BuildType Solution="STAGING|*" Project="DEV" />
   </Project>

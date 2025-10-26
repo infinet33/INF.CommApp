@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\INF.CommApp.DATA\INF.CommApp.DATA.csproj" />
+    <ProjectReference Include="..\INF.CommApp.BLL\INF.CommApp.BLL.csproj" />
   </ItemGroup>
 
 </Project>

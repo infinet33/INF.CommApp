@@ -1,0 +1,90 @@
+<Project>
+  
+  <!-- Global Properties for All Projects -->
+  <PropertyGroup>
+    <!-- Language Version -->
+    <LangVersion>latest</LangVersion>
+    
+    <!-- Nullable Reference Types -->
+    <Nullable>enable</Nullable>
+    
+    <!-- Implicit Usings -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    <!-- Treat Warnings as Errors (except for nullable warnings during migration) -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <WarningsNotAsErrors>CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;CS8625</WarningsNotAsErrors>
+    
+    <!-- Code Analysis -->
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    
+    <!-- XML Documentation - Disabled -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    
+    <!-- Assembly Information -->
+    <Company>INF Healthcare Communications</Company>
+    <Product>INF CommApp</Product>
+    <Copyright>Copyright © INF Healthcare Communications</Copyright>
+    
+    <!-- Reproducible Builds -->
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <!-- Code Analysis Rules -->
+  <PropertyGroup>
+    <!-- Specific Rules to Enforce -->
+    <WarningsAsErrors Condition="'$(TreatWarningsAsErrors)' != 'true'">
+      <!-- Naming Conventions -->
+      IDE1006;
+      <!-- Use 'var' appropriately - IDE0008 removed to allow .editorconfig control -->
+      IDE0007;
+      <!-- Remove unnecessary using directives -->
+      IDE0005;
+      <!-- Use object initializers -->
+      IDE0017;
+      <!-- Use collection initializers -->
+      IDE0028;
+      <!-- Use auto properties -->
+      IDE0032;
+      <!-- Use explicitly provided tuple names -->
+      IDE0033;
+      <!-- Use pattern matching -->
+      IDE0019;IDE0020;IDE0029;IDE0030;
+      <!-- Remove unreachable code -->
+      CS0162;
+      <!-- Variable is assigned but never used -->
+      CS0219;
+      <!-- Field is never used -->
+      CS0169;
+    </WarningsAsErrors>
+  </PropertyGroup>
+
+  <!-- Nullable Reference Type Warnings (gradually enable these) -->
+  <PropertyGroup Condition="'$(EnableStrictNullable)' == 'true'">
+    <WarningsAsErrors>$(WarningsAsErrors);CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;CS8625</WarningsAsErrors>
+  </PropertyGroup>
+
+  <!-- Package References for Code Analysis -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- Project-Specific Overrides -->
+  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('.Tests'))">
+    <!-- Test projects can have more relaxed rules -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <!-- Global Suppressions for Generated Files -->
+  <ItemGroup>
+    <GlobalAnalyzerConfigFiles Include="$(MSBuildThisFileDirectory)\.globalconfig" Condition="Exists('$(MSBuildThisFileDirectory)\.globalconfig')" />
+  </ItemGroup>
+
+</Project>

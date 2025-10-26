@@ -3,6 +3,7 @@ namespace INF.CommApp.DATA.Models
     public class User
     {
         public int Id { get; set; }
+        public Guid ExternalId { get; set; } = Guid.NewGuid();
         public string UserName { get; set; }
         public string Type { get; set; } // nurse, caregiver, doctor, etc.
         public int? AgencyId { get; set; }
