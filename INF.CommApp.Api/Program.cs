@@ -14,12 +14,13 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 // Add Key Vault configuration (Production only)
-if (builder.Environment.IsProduction())
+// Temporarily disabled for local development
+/*if (builder.Environment.IsProduction())
 {
     builder.Configuration.AddAzureKeyVault(
         new Uri("https://kv-commapp-poc.vault.azure.net/"),
         new DefaultAzureCredential());
-}
+}*/
 
 builder.Services.AddControllers();
 
