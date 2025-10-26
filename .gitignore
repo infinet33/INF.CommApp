@@ -2,16 +2,30 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+# Visual Studio
 /.vs
-/INF.CommApp.Api/bin
-/INF.CommApp.Api/obj
+*.user
+
+# Build outputs - bin and obj directories
+**/bin/
+**/obj/
+
+# Specific project directories (legacy specific paths)
+/INF.CommApp.API/bin
+/INF.CommApp.API/obj
 /INF.CommApp.BLL/bin
 /INF.CommApp.BLL/obj
 /INF.CommApp.DATA/bin
 /INF.CommApp.DATA/obj
 /INF.CommApp.Maui/bin
 /INF.CommApp.Maui/obj
-/INF.CommApp.Web/bin/DEV/net9.0
+/INF.CommApp.Web/bin
 /INF.CommApp.Web/obj
+/INF.CommApp.Tests/bin
+/INF.CommApp.Tests/obj
 /INF.CommApp.Web/wwwroot/lib/bootstrap/dist
-/INF.CommApp.Web/bin/PROD/net9.0
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
