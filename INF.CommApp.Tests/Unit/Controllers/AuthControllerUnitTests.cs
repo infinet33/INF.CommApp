@@ -130,6 +130,12 @@ public class AuthControllerUnitTests
     [InlineData("cna", SystemRoles.CNA)]
     [InlineData("pharmacist", SystemRoles.Pharmacist)]
     [InlineData("caregiver", SystemRoles.Caregiver)]
+    [InlineData("administrator", SystemRoles.Administrator)]
+    [InlineData("facilityadmin", SystemRoles.FacilityAdmin)]
+    [InlineData("facilitymanager", SystemRoles.FacilityManager)]
+    [InlineData("billingadmin", SystemRoles.BillingAdmin)]
+    [InlineData("resident", SystemRoles.Resident)]
+    [InlineData("familymember", SystemRoles.FamilyMember)]
     [InlineData("unknown", SystemRoles.ReadOnly)]
     public async Task Register_DifferentUserTypes_AssignsCorrectRoles(string userType, string expectedRole)
     {

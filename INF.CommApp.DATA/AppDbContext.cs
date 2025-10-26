@@ -15,6 +15,7 @@ namespace INF.CommApp.DATA
         public DbSet<User> Users { get; set; }
         public DbSet<Agency> Agencies { get; set; }
         public DbSet<UserResident> UserResidents { get; set; }
+        public DbSet<UserFacility> UserFacilities { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<NotificationSubscription> NotificationSubscriptions { get; set; }
         public DbSet<UserNotificationPreference> UserNotificationPreferences { get; set; }
@@ -84,6 +85,22 @@ namespace INF.CommApp.DATA
                 .HasOne(ur => ur.Role)
                 .WithMany(r => r.UserRoles)
                 .HasForeignKey(ur => ur.RoleId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure UserFacility junction table (many-to-many User <-> Facility)
+            modelBuilder.Entity<UserFacility>()
+                .HasKey(uf => new { uf.UserId, uf.FacilityId });
+
+            modelBuilder.Entity<UserFacility>()
+                .HasOne(uf => uf.User)
+                .WithMany(u => u.UserFacilities)
+                .HasForeignKey(uf => uf.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<UserFacility>()
+                .HasOne(uf => uf.Facility)
+                .WithMany(f => f.UserFacilities)
+                .HasForeignKey(uf => uf.FacilityId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Configure Role indexes

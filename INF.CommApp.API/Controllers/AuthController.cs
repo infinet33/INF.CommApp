@@ -253,6 +253,16 @@ namespace INF.CommApp.API.Controllers
             {
                 "admin" => SystemRoles.Administrator,
                 "administrator" => SystemRoles.Administrator,
+                "sysadmin" => SystemRoles.Administrator,
+                "systemadmin" => SystemRoles.Administrator,
+                "facilityadmin" => SystemRoles.FacilityAdmin,
+                "facility_admin" => SystemRoles.FacilityAdmin,
+                "facilitymanager" => SystemRoles.FacilityManager,
+                "facility_manager" => SystemRoles.FacilityManager,
+                "manager" => SystemRoles.FacilityManager,
+                "billingadmin" => SystemRoles.BillingAdmin,
+                "billing_admin" => SystemRoles.BillingAdmin,
+                "billing" => SystemRoles.BillingAdmin,
                 "doctor" => SystemRoles.Doctor,
                 "nurse" => SystemRoles.Nurse,
                 "lpn" => SystemRoles.LPN,
@@ -262,6 +272,10 @@ namespace INF.CommApp.API.Controllers
                 "physicaltherapist" => SystemRoles.PhysicalTherapist,
                 "occupationaltherapist" => SystemRoles.OccupationalTherapist,
                 "socialworker" => SystemRoles.SocialWorker,
+                "resident" => SystemRoles.Resident,
+                "familymember" => SystemRoles.FamilyMember,
+                "family_member" => SystemRoles.FamilyMember,
+                "family" => SystemRoles.FamilyMember,
                 _ => SystemRoles.ReadOnly
             };
         }

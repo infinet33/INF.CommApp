@@ -72,12 +72,17 @@ public class AuthControllerIntegrationTests : IClassFixture<WebApplicationFactor
         var roles = new[]
         {
             SystemRoles.Administrator,
+            SystemRoles.FacilityAdmin,
+            SystemRoles.FacilityManager,
+            SystemRoles.BillingAdmin,
             SystemRoles.Doctor,
             SystemRoles.Nurse,
             SystemRoles.LPN,
             SystemRoles.CNA,
             SystemRoles.Pharmacist,
             SystemRoles.Caregiver,
+            SystemRoles.Resident,
+            SystemRoles.FamilyMember,
             SystemRoles.ReadOnly
         };
 
@@ -270,6 +275,11 @@ public class AuthControllerIntegrationTests : IClassFixture<WebApplicationFactor
     [InlineData("pharmacist", SystemRoles.Pharmacist)]
     [InlineData("caregiver", SystemRoles.Caregiver)]
     [InlineData("admin", SystemRoles.Administrator)]
+    [InlineData("facilityadmin", SystemRoles.FacilityAdmin)]
+    [InlineData("facilitymanager", SystemRoles.FacilityManager)]
+    [InlineData("billingadmin", SystemRoles.BillingAdmin)]
+    [InlineData("resident", SystemRoles.Resident)]
+    [InlineData("familymember", SystemRoles.FamilyMember)]
     [InlineData("unknown", SystemRoles.ReadOnly)]
     public async Task Register_DifferentUserTypes_StoresCorrectRolesInDatabase(string userType, string expectedRole)
     {

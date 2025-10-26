@@ -33,6 +33,7 @@ namespace INF.CommApp.DATA.Models
         // Navigation properties
         public Agency? Agency { get; set; }
         public ICollection<UserResident> UserResidents { get; set; } = [];
+        public ICollection<UserFacility> UserFacilities { get; set; } = [];
         public ICollection<NotificationSubscription> NotificationSubscriptions { get; set; } = [];
         public ICollection<UserNotificationPreference> NotificationPreferences { get; set; } = [];
         public ICollection<UserRole> UserRoles { get; set; } = [];

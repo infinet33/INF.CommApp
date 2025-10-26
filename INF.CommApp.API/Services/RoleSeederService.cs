@@ -1,7 +1,6 @@
 using INF.CommApp.DATA;
 using INF.CommApp.DATA.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace INF.CommApp.API.Services
 {
@@ -35,8 +34,10 @@ namespace INF.CommApp.API.Services
 
                 var rolesToSeed = new[]
                 {
-                    new { Name = SystemRoles.Administrator, Description = "System administrator with full access" },
-                    new { Name = SystemRoles.FacilityAdmin, Description = "Facility administrator" },
+                    new { Name = SystemRoles.Administrator, Description = "System-wide administrator with full access across all facilities" },
+                    new { Name = SystemRoles.FacilityAdmin, Description = "Facility administrator with full facility management permissions" },
+                    new { Name = SystemRoles.FacilityManager, Description = "Facility operations manager with staff and scheduling permissions" },
+                    new { Name = SystemRoles.BillingAdmin, Description = "Facility billing and accounting administrator" },
                     new { Name = SystemRoles.Nurse, Description = "Registered nurse" },
                     new { Name = SystemRoles.LPN, Description = "Licensed practical nurse" },
                     new { Name = SystemRoles.CNA, Description = "Certified nursing assistant" },
@@ -48,6 +49,8 @@ namespace INF.CommApp.API.Services
                     new { Name = SystemRoles.Pharmacist, Description = "Pharmacist" },
                     new { Name = SystemRoles.PhysicalTherapist, Description = "Physical therapist" },
                     new { Name = SystemRoles.OccupationalTherapist, Description = "Occupational therapist" },
+                    new { Name = SystemRoles.Resident, Description = "Assisted living resident" },
+                    new { Name = SystemRoles.FamilyMember, Description = "Family member of resident" },
                     new { Name = SystemRoles.ReadOnly, Description = "Read-only access (reporting, etc.)" }
                 };
 
