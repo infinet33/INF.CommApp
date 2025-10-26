@@ -10,7 +10,7 @@ namespace INF.CommApp.DATA
         {
             // Build configuration to read from appsettings files
             IConfigurationBuilder configurationBuilder = new ConfigurationBuilder()
-                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../INF.CommApp.Api"))
+                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../INF.CommApp.API"))
                 .AddJsonFile("appsettings.json", optional: false)
                 .AddJsonFile("appsettings.Development.json", optional: true);
 

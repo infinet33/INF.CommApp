@@ -43,7 +43,7 @@ public class NotificationService : INotificationService
 ### Solution Architecture
 ```
 INF.CommApp/
-├── INF.CommApp.Api/          # Web API controllers and endpoints
+├── INF.CommApp.API/          # Web API controllers and endpoints
 ├── INF.CommApp.BLL/          # Business logic layer
 ├── INF.CommApp.DATA/         # Data access layer (EF Core)
 ├── INF.CommApp.Web/          # Web application (if needed)
@@ -51,7 +51,7 @@ INF.CommApp/
 ```
 
 ### File Organization
-- **Controllers**: `INF.CommApp.Api/Controllers/` - REST API endpoints
+- **Controllers**: `INF.CommApp.API/Controllers/` - REST API endpoints
 - **Services**: `INF.CommApp.BLL/Services/` - Business logic implementation  
 - **Models**: `INF.CommApp.DATA/Models/` - Entity Framework models
 - **Interfaces**: `INF.CommApp.BLL/Interfaces/` - Service contracts
