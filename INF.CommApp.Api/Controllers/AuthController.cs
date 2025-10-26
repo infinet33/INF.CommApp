@@ -251,6 +251,8 @@ namespace INF.CommApp.API.Controllers
         {
             return userType.ToLower() switch
             {
+                "admin" => SystemRoles.Administrator,
+                "administrator" => SystemRoles.Administrator,
                 "doctor" => SystemRoles.Doctor,
                 "nurse" => SystemRoles.Nurse,
                 "lpn" => SystemRoles.LPN,

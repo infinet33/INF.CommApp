@@ -22,4 +22,7 @@
   <Project Path="INF.CommApp.Web/INF.CommApp.WEB.csproj">
     <BuildType Solution="STAGING|*" Project="DEV" />
   </Project>
+  <Project Path="INF.CommApp.Tests/INF.CommApp.Tests.csproj">
+    <BuildType Solution="STAGING|*" Project="DEV" />
+  </Project>
 </Solution>

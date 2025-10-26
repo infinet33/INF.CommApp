@@ -1,0 +1,92 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-tests",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/INF.CommApp.Tests/INF.CommApp.Tests.csproj"
+            ],
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build-tests-debug",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/INF.CommApp.Tests/INF.CommApp.Tests.csproj",
+                "--configuration",
+                "Debug",
+                "--verbosity",
+                "quiet",
+                "--nologo"
+            ],
+            "options": {
+                "env": {
+                    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+                    "DOTNET_NOLOGO": "1",
+                    "APPLICATIONINSIGHTS_CONNECTION_STRING": ""
+                }
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build",
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        },
+        {
+            "label": "run-user-creation-test",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/INF.CommApp.Tests/INF.CommApp.Tests.csproj",
+                "--filter",
+                "Register_ValidNurseUser_ReturnsOkResult",
+                "--logger",
+                "console;verbosity=detailed"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "debug-user-creation-test",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/INF.CommApp.Tests/INF.CommApp.Tests.csproj",
+                "--filter",
+                "Register_ValidNurseUser_ReturnsOkResult",
+                "--logger",
+                "console;verbosity=detailed",
+                "--configuration",
+                "Debug"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        }
+    ]
+}

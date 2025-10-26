@@ -1,0 +1,138 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Unit Test - Register Valid Nurse User",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/INF.CommApp.Tests/bin/Debug/net9.0/INF.CommApp.Tests.dll",
+            "args": [
+                "--filter",
+                "Register_ValidNurseUser_ReturnsOkResult"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "preLaunchTask": "build-tests-debug",
+            "env": {
+                "DOTNET_ENVIRONMENT": "Development",
+                "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+                "DOTNET_NOLOGO": "1",
+                "APPLICATIONINSIGHTS_CONNECTION_STRING": "",
+                "DOTNET_DiagnosticPorts": "",
+                "DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER": "0"
+            },
+            "logging": {
+                "moduleLoad": false
+            },
+            "justMyCode": true,
+            "suppressJITOptimizations": true
+        },
+        {
+            "name": "Debug Test with dotnet test",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/INF.CommApp.Tests/INF.CommApp.Tests.csproj",
+                "--filter",
+                "Register_ValidNurseUser_ReturnsOkResult",
+                "--configuration",
+                "Debug",
+                "--logger",
+                "console;verbosity=quiet"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "preLaunchTask": "build-tests-debug",
+            "env": {
+                "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+                "DOTNET_NOLOGO": "1",
+                "APPLICATIONINSIGHTS_CONNECTION_STRING": "",
+                "DOTNET_DiagnosticPorts": "",
+                "DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER": "0"
+            },
+            "logging": {
+                "moduleLoad": false
+            },
+            "justMyCode": true,
+            "suppressJITOptimizations": true
+        },
+        {
+            "name": "Debug Test - Attach to Process",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        },
+        {
+            "name": "Debug Unit Test - Register Different User Types",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/INF.CommApp.Tests/INF.CommApp.Tests.csproj",
+                "--filter",
+                "Register_DifferentUserTypes_AssignsCorrectRoles",
+                "--logger",
+                "console;verbosity=detailed"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Debug Unit Test - Register Sets Correct Properties",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/INF.CommApp.Tests/INF.CommApp.Tests.csproj",
+                "--filter",
+                "Register_SetsCorrectUserProperties",
+                "--logger",
+                "console;verbosity=detailed"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Debug All User Registration Tests",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/INF.CommApp.Tests/INF.CommApp.Tests.csproj",
+                "--filter",
+                "FullyQualifiedName~Register",
+                "--logger",
+                "console;verbosity=detailed"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Debug Integration Test - Register Valid Nurse",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/INF.CommApp.Tests/INF.CommApp.Tests.csproj",
+                "--filter",
+                "Register_ValidNurseUser_ReturnsSuccess",
+                "--logger",
+                "console;verbosity=detailed"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        }
+    ]
+}

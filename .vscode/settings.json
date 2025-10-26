@@ -12,5 +12,15 @@
     "problems.showCurrentInStatus": true,
     // Format settings
     "omnisharp.enableEditorConfigSupport": true,
-    "omnisharp.enableRoslynAnalyzers": true
+    "omnisharp.enableRoslynAnalyzers": true,
+    // Debug settings to suppress module load messages
+    "debug.console.collapseIdenticalLines": true,
+    "debug.allowBreakpointsEverywhere": false,
+    "debug.openDebug": "openOnDebugBreak",
+    "debug.terminal.clearBeforeReusing": true,
+    // Suppress .NET debugger noise
+    "omnisharp.enableMsBuildLoadProjectsOnDemand": false,
+    "omnisharp.useModernNet": true,
+    // Output panel settings
+    "output.smartScroll.enabled": false
 }
