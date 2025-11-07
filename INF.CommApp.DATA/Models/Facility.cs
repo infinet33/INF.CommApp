@@ -9,7 +9,7 @@ namespace INF.CommApp.DATA.Models
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
-        
+
         // Navigation properties
         public ICollection<Resident> Residents { get; set; } = [];
         public ICollection<UserFacility> UserFacilities { get; set; } = [];

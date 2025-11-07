@@ -177,7 +177,7 @@ namespace INF.CommApp.BLL.Services
             // Check if assignment already exists
             bool exists = await _context.UserFacilities
                 .AnyAsync(uf => uf.UserId == userId && uf.FacilityId == facilityId);
-            
+
             if (exists)
             {
                 return false; // Assignment already exists
@@ -346,8 +346,8 @@ namespace INF.CommApp.BLL.Services
         public async Task<bool> IsUserAssignedToFacilityAsync(Guid userExternalId, Guid facilityExternalId)
         {
             return await _context.UserFacilities
-                .AnyAsync(uf => uf.User.ExternalId == userExternalId && 
-                               uf.Facility.ExternalId == facilityExternalId && 
+                .AnyAsync(uf => uf.User.ExternalId == userExternalId &&
+                               uf.Facility.ExternalId == facilityExternalId &&
                                uf.IsActive);
         }
 
@@ -386,7 +386,7 @@ namespace INF.CommApp.BLL.Services
         public async Task<int> AssignMultipleUsersToFacilityAsync(IEnumerable<int> userIds, int facilityId, string? defaultRole = null)
         {
             int assignedCount = 0;
-            
+
             foreach (int userId in userIds)
             {
                 bool success = await AssignUserToFacilityAsync(userId, facilityId, defaultRole);
@@ -402,7 +402,7 @@ namespace INF.CommApp.BLL.Services
         public async Task<int> AssignUserToMultipleFacilitiesAsync(int userId, IEnumerable<int> facilityIds, string? defaultRole = null)
         {
             int assignedCount = 0;
-            
+
             foreach (int facilityId in facilityIds)
             {
                 bool success = await AssignUserToFacilityAsync(userId, facilityId, defaultRole);
