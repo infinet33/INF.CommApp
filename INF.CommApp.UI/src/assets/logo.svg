@@ -1,0 +1,12 @@
+<svg width="120" height="48" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="120" height="48" rx="8" fill="#2563eb"/>
+  
+  <!-- Medical Cross Symbol -->
+  <rect x="12" y="18" width="16" height="4" rx="2" fill="white"/>
+  <rect x="18" y="12" width="4" height="16" rx="2" fill="white"/>
+  
+  <!-- Company Text -->
+  <text x="36" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">INF</text>
+  <text x="36" y="32" font-family="Arial, sans-serif" font-size="8" fill="#93c5fd">CommApp</text>
+</svg>
